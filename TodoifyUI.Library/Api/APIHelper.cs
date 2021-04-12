@@ -12,7 +12,7 @@ using TodoifyUI.Library.Models;
 
 namespace TodoifyUI.Library.Api
 {
-    public class APIHelper
+    public class APIHelper : IAPIHelper
     {
         private HttpClient _apiClient;
         private ILoggedInUserModel _loggedInUser;
