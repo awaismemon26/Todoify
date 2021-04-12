@@ -14,7 +14,7 @@ namespace TodoifyData
         public DateTime DueDate { get; set; }
         public bool CompletionStatus { get; set; }
 
-        public List<ToDo> GetAllToDo()
+        public List<ToDo> GetAll()
         {
             List<ToDo> list = new List<ToDo>()
             {

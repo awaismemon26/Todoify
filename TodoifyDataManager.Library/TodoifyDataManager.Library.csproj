@@ -34,7 +34,11 @@
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.78\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,13 +50,12 @@
   <ItemGroup>
     <Compile Include="DataAccess\ToDoData.cs" />
     <Compile Include="DataAccess\UserData.cs" />
+    <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
     <Compile Include="Models\ToDoModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Internal\DataAccess\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\TodoifyData\TodoifyData.csproj">
       <Project>{0AD5243E-0A4D-4D10-A6CB-2B0A73F8C9F3}</Project>

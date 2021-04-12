@@ -25,8 +25,8 @@ namespace TodoifyDataManager.Library.DataAccess
         /// <returns>List of ToDo Items</returns>
         public List<ToDoModel> GetAll()
         {
-            ToDo list = new ToDo();
-            List<ToDo> _list = list.GetAllToDo();
+            ToDo list = new ToDo();         
+            List<ToDo> _list = list.GetAll();
 
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<ToDo, ToDoModel>();

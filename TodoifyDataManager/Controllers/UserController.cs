@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,14 +13,14 @@ using TodoifyDataManager.Library.Models;
 namespace TodoifyDataManager.Controllers
 {
     [Authorize]
-    public class ToDoController : ApiController
+    public class UserController : ApiController
     {
         [HttpGet]
-        public List<ToDoModel> GetAll()
+        public UserModel GetById()
         {
-            ToDoData data = new ToDoData();
-
-            return data.GetAll();
+            string userId = RequestContext.Principal.Identity.GetUserId();
+            UserData data = new UserData();
+            return data.GetUserById(userId).First();
         }
     }
 }

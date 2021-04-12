@@ -13,7 +13,5 @@ namespace TodoifyDataManager.Library.Models
         public DateTime CreationDate { get; set; }
         public DateTime DueDate { get; set; }
         public bool CompletionStatus { get; set; }
-
-        public List<ToDoModel> ToDoList { get; set; }
     }
 }
