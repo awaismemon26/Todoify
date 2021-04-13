@@ -34,7 +34,9 @@ namespace TodoifyWPF
         //where does container know what to connect to what
         protected override void Configure()
         {
-            _container.Instance(_container);
+            _container.Instance(_container)
+                .PerRequest<ITodoEndpoint, TodoEndpoint>();
+
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
