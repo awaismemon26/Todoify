@@ -42,7 +42,7 @@
         <TextBox x:Name="TaskTextBox" Grid.Row="5" Margin="0 20 0 20" Grid.Column="1" Grid.ColumnSpan="2"
                  ></TextBox>
 
-
+        <Button x:Name="AddTask" Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom" MinHeight="20" MinWidth="80" HorizontalAlignment="Right">Add Task</Button>
         <DatePicker Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" Margin="60 0 0 0"  SelectedDateFormat="Short" 
                     SelectedDate="{Binding SelectedDueDate}"></DatePicker>
     </Grid>

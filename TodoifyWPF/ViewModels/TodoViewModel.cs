@@ -3,10 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 using TodoifyUI.Library.Api;
 using TodoifyUI.Library.Models;
@@ -18,7 +15,6 @@ namespace TodoifyWPF.ViewModels
         ITodoEndpoint _todoEndpoint;
 
         private BindingList<TodoModel> _todo = new BindingList<TodoModel>();
-
         public BindingList<TodoModel> Todos
         {
             get { return _todo; }
@@ -31,38 +27,41 @@ namespace TodoifyWPF.ViewModels
 
 
         private BindingList<TodoModel> _notCompletedTodo;
-
         public BindingList<TodoModel> NotCompletedTodo
         {
             get { return _notCompletedTodo; }
-            set 
-            { 
+            set
+            {
                 _notCompletedTodo = value;
                 NotifyOfPropertyChange(() => NotCompletedTodo);
             }
         }
 
         private BindingList<TodoModel> _completedTodo;
-
         public BindingList<TodoModel> CompletedTodo
         {
             get { return _completedTodo; }
-            set 
-            { 
+            set
+            {
                 _completedTodo = value;
                 NotifyOfPropertyChange(() => CompletedTodo);
             }
         }
 
-        public string TaskTextBox { get; set; }
+        private string _tasktextbox;
+        public string TaskTextBox
+        {
+            get { return _tasktextbox; }
+            set { _tasktextbox = value; NotifyOfPropertyChange(() => TaskTextBox); NotifyOfPropertyChange(() => CanAddTask); }
+        }
 
+        
         private TodoModel _selectedTodo;
-
         public TodoModel SelectedTodo
         {
             get { return _selectedTodo; }
-            set 
-            { 
+            set
+            {
                 _selectedTodo = value;
                 NotifyOfPropertyChange(() => SelectedTodo);
                 NotifyOfPropertyChange(() => CanRemoveTask);
@@ -70,17 +69,15 @@ namespace TodoifyWPF.ViewModels
         }
 
         private DateTime _selectedDueDate;
-
         public DateTime SelectedDueDate
         {
             get { return _selectedDueDate; }
-            set 
-            { 
+            set
+            {
                 _selectedDueDate = value;
                 NotifyOfPropertyChange(() => SelectedDueDate);
             }
         }
-
 
 
         public TodoViewModel(ITodoEndpoint todoEndpoint)
@@ -101,29 +98,28 @@ namespace TodoifyWPF.ViewModels
             Todos = new BindingList<TodoModel>(list);
         }
 
-        public void AddTodo(Key key)
+        public void AddTask()
         {
-            if(key == Key.Enter)
+
+            TodoModel todo = new TodoModel
             {
-                TodoModel todo = new TodoModel
-                {
-                    TaskName = TaskTextBox,
-                    DueDate = SelectedDueDate,
-                    CreationDate = DateTime.Now,
-                    CompletionStatus = false
-                };
-                Todos.Add(todo);
-            }
-            
+                ID = int.Parse(DateTime.Now.ToString("HHmmss")),
+                TaskName = TaskTextBox,
+                DueDate = SelectedDueDate,
+                CreationDate = DateTime.Now,
+                CompletionStatus = false
+            };
+            Todos.Add(todo);
+
         }
 
-        public bool CanRemoveTask 
+        public bool CanRemoveTask
         {
             get
             {
                 bool output = false;
 
-                if(Todos.Count > 0)
+                if (Todos.Count > 0)
                 {
                     output = true;
                 }
@@ -131,6 +127,19 @@ namespace TodoifyWPF.ViewModels
                 return output;
             }
 
+        }
+        public bool CanAddTask
+        {
+            get
+            {
+                bool output = false;
+
+                if (!string.IsNullOrEmpty(TaskTextBox))
+                {
+                    output = true;
+                }
+                return output;
+            }
         }
         public void RemoveTask()
         {
