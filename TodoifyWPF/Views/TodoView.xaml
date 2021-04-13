@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TodoifyWPF.Views"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="500" d:DesignWidth="700" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -23,27 +23,27 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                   FontSize="30" Margin="0 0 0 20">Todoify</TextBlock>
+                   FontSize="30" Margin="0 20 0 0">Todoify</TextBlock>
 
         <GroupBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Header="List of Tasks">
-            <StackPanel Margin="10">
-                <ListBox ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}">
+            
+                <ListBox Margin="8" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding TaskName}"></TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </StackPanel>
+            
         </GroupBox>
         <Button x:Name="RemoveTask" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" MinHeight="20" MinWidth="80" HorizontalAlignment="Right">Delete Task</Button>
 
         <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Text="Add Task"></TextBlock>
-        <TextBox x:Name="TaskTextBox" Grid.Row="5" Margin="0 20 0 20" Grid.Column="1" Grid.ColumnSpan="2"
+        <TextBox x:Name="TaskTextBox" Grid.Row="5" Margin="0 20 100 20" Grid.Column="1" Grid.ColumnSpan="2"
                  ></TextBox>
 
-        <Button x:Name="AddTask" Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom" MinHeight="20" MinWidth="80" HorizontalAlignment="Right">Add Task</Button>
-        <DatePicker Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" Margin="60 0 0 0"  SelectedDateFormat="Short" 
+        <Button x:Name="AddTask" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" MinHeight="20" MinWidth="80" Margin="0 0 8 0" HorizontalAlignment="Right">Add Task</Button>
+        <DatePicker Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" SelectedDateFormat="Short" 
                     SelectedDate="{Binding SelectedDueDate}"></DatePicker>
     </Grid>
 </UserControl>

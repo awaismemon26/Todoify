@@ -110,7 +110,7 @@ namespace TodoifyWPF.ViewModels
                 CompletionStatus = false
             };
             Todos.Add(todo);
-
+            
         }
 
         public bool CanRemoveTask
