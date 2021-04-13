@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 using TodoifyUI.Library.Api;
 using TodoifyUI.Library.Models;
@@ -43,6 +44,15 @@ namespace TodoifyWPF
                 .Singleton<IAPIHelper, APIHelper>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>();
 
+            MessageBinder.SpecialValues.Add("$pressedkey", (context) =>
+            {
+                var keyArgs = context.EventArgs as KeyEventArgs;
+
+                if (keyArgs != null)
+                    return keyArgs.Key;
+
+                return null;
+            });
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

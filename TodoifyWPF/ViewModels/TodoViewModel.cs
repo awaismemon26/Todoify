@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 using TodoifyUI.Library.Api;
 using TodoifyUI.Library.Models;
@@ -16,9 +17,76 @@ namespace TodoifyWPF.ViewModels
     {
         ITodoEndpoint _todoEndpoint;
 
+        private BindingList<TodoModel> _todo = new BindingList<TodoModel>();
+
+        public BindingList<TodoModel> Todos
+        {
+            get { return _todo; }
+            set
+            {
+                _todo = value;
+                NotifyOfPropertyChange(() => Todos);
+            }
+        }
+
+
+        private BindingList<TodoModel> _notCompletedTodo;
+
+        public BindingList<TodoModel> NotCompletedTodo
+        {
+            get { return _notCompletedTodo; }
+            set 
+            { 
+                _notCompletedTodo = value;
+                NotifyOfPropertyChange(() => NotCompletedTodo);
+            }
+        }
+
+        private BindingList<TodoModel> _completedTodo;
+
+        public BindingList<TodoModel> CompletedTodo
+        {
+            get { return _completedTodo; }
+            set 
+            { 
+                _completedTodo = value;
+                NotifyOfPropertyChange(() => CompletedTodo);
+            }
+        }
+
+        public string TaskTextBox { get; set; }
+
+        private TodoModel _selectedTodo;
+
+        public TodoModel SelectedTodo
+        {
+            get { return _selectedTodo; }
+            set 
+            { 
+                _selectedTodo = value;
+                NotifyOfPropertyChange(() => SelectedTodo);
+                NotifyOfPropertyChange(() => CanRemoveTask);
+            }
+        }
+
+        private DateTime _selectedDueDate;
+
+        public DateTime SelectedDueDate
+        {
+            get { return _selectedDueDate; }
+            set 
+            { 
+                _selectedDueDate = value;
+                NotifyOfPropertyChange(() => SelectedDueDate);
+            }
+        }
+
+
+
         public TodoViewModel(ITodoEndpoint todoEndpoint)
         {
             _todoEndpoint = todoEndpoint;
+            SelectedDueDate = DateTime.Today;
         }
 
         protected override async void OnViewLoaded(object view)
@@ -33,17 +101,42 @@ namespace TodoifyWPF.ViewModels
             Todos = new BindingList<TodoModel>(list);
         }
 
-        private BindingList<TodoModel> _todo;
-
-        public BindingList<TodoModel> Todos
+        public void AddTodo(Key key)
         {
-            get { return _todo; }
-            set 
-            { 
-                _todo = value;
-                NotifyOfPropertyChange(() => Todos);
+            if(key == Key.Enter)
+            {
+                TodoModel todo = new TodoModel
+                {
+                    TaskName = TaskTextBox,
+                    DueDate = SelectedDueDate,
+                    CreationDate = DateTime.Now,
+                    CompletionStatus = false
+                };
+                Todos.Add(todo);
             }
+            
         }
+
+        public bool CanRemoveTask 
+        {
+            get
+            {
+                bool output = false;
+
+                if(Todos.Count > 0)
+                {
+                    output = true;
+                }
+
+                return output;
+            }
+
+        }
+        public void RemoveTask()
+        {
+
+        }
+
 
     }
 }
