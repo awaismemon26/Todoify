@@ -65,6 +65,7 @@ namespace TodoifyWPF.ViewModels
                 _selectedTodo = value;
                 NotifyOfPropertyChange(() => SelectedTodo);
                 NotifyOfPropertyChange(() => CanRemoveTask);
+                NotifyOfPropertyChange(() => CanCompleteTask);
             }
         }
 
@@ -98,27 +99,13 @@ namespace TodoifyWPF.ViewModels
             Todos = new BindingList<TodoModel>(list);
         }
 
-        public void AddTask()
-        {
-
-            TodoModel todo = new TodoModel
-            {
-                ID = int.Parse(DateTime.Now.ToString("HHmmss")),
-                TaskName = TaskTextBox,
-                DueDate = SelectedDueDate,
-                CreationDate = DateTime.Now,
-                CompletionStatus = false
-            };
-            Todos.Add(todo);
-            
-        }
-
         public bool CanRemoveTask
         {
             get
             {
                 bool output = false;
 
+                // There should be values in the Todos to remove the task
                 if (Todos.Count > 0)
                 {
                     output = true;
@@ -127,6 +114,21 @@ namespace TodoifyWPF.ViewModels
                 return output;
             }
 
+        }
+        public bool CanCompleteTask
+        {
+            get
+            {
+                bool output = false;
+
+                // Selected task should be NOT completed status and there should be a values in Todos to complete the task
+                if (SelectedTodo?.CompletionStatus == false && Todos.Count > 0)
+                {
+                    output = true;
+                }
+
+                return output;
+            }
         }
         public bool CanAddTask
         {
@@ -141,9 +143,33 @@ namespace TodoifyWPF.ViewModels
                 return output;
             }
         }
-        public void RemoveTask()
+
+        public void CompleteTask()
         {
 
+        }
+
+        public void AddTask()
+        {
+
+            TodoModel todo = new TodoModel
+            {
+                ID = int.Parse(DateTime.Now.ToString("HHmmss")),
+                TaskName = TaskTextBox,
+                DueDate = SelectedDueDate,
+                CreationDate = DateTime.Now,
+                CompletionStatus = false
+            };
+            Todos.Add(todo);
+            
+            // Add Todo into database async
+        }
+
+        public void RemoveTask()
+        {
+            // Put the completion status to false and update in the database
+
+            Todos.Remove(SelectedTodo);
         }
 
 
