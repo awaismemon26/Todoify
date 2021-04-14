@@ -13,5 +13,12 @@ namespace TodoifyUI.Library.Models
         public DateTime CreationDate { get; set; }
         public DateTime DueDate { get; set; }
         public bool CompletionStatus { get; set; }
+        public string DisplayText 
+        {
+            get
+            {
+                return $"{ TaskName } ({ DueDate.ToShortDateString() })";
+            } 
+        }
     }
 }

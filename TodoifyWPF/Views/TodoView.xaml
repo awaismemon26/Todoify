@@ -32,7 +32,7 @@
                 <ListBox Margin="8" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding TaskName}"></TextBlock>
+                            <TextBlock Text="{Binding DisplayText}"></TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
