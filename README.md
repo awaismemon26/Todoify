@@ -12,8 +12,12 @@ front end project contains FrontEnd UI library and WPF application itself.
 4. You can use the following credentials to login 
 	1. username: user@vencortex.io
 	2. password: Pwd123!
-5. If you do not want to use the credentials, then goto https://localhost:PORT/swagge, then click Account and POST /api/Account/Register 
+5. If you do not want or cannot use the credentials, then goto https://localhost:PORT/swagger, then click Account and POST /api/Account/Register 
+![Register 01](./Images/register1.png)
+![Register 02](./Images/register2.png)
+![Register 03](./Images/register3.png)
 
+6. After you have registered yourself, you can login in WPF application with your username and password
 
 ### Design
 The motive for this design is to loosly couple code so that if we want to change front end in the future, it would not effect the backend libraries and API. We might have more leverage in adding and removing components from a system without worrying alot about code rewrite or failure.

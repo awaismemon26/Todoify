@@ -21,6 +21,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{787E918D-B65A-4508-9295-D6F7614540AC}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\..\Pictures\design.png = ..\..\..\..\Pictures\design.png
+		Images\register1.png = Images\register1.png
+		Images\register2.png = Images\register2.png
+		Images\register3.png = Images\register3.png
 	EndProjectSection
 EndProject
 Global
