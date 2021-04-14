@@ -24,6 +24,7 @@ namespace TodoifyWPF.ViewModels
         {
             _apiHelper = apiHelper;
             _events = events;
+            IsProgressBarVisible = false;
         }
 
         public bool IsErrorVisible
@@ -39,6 +40,20 @@ namespace TodoifyWPF.ViewModels
             }
 
         }
+
+        private bool _isProgressBarVisible;
+
+        public bool IsProgressBarVisible
+        {
+            get { return _isProgressBarVisible; }
+            set 
+            { 
+                _isProgressBarVisible = value; 
+                NotifyOfPropertyChange(() => IsProgressBarVisible); 
+                NotifyOfPropertyChange(() => CanLogIn); 
+            }
+        }
+
 
         public string ErrorMessage
         {
@@ -79,7 +94,7 @@ namespace TodoifyWPF.ViewModels
             {
                 bool output = false;
 
-                if (UserName?.Length > 0 && Password?.Length > 0)
+                if (UserName?.Length > 0 && Password?.Length > 0 && IsProgressBarVisible == false)
                 {
                     output = true;
                 }
@@ -92,7 +107,11 @@ namespace TodoifyWPF.ViewModels
             try
             {
                 ErrorMessage = "";
+                IsProgressBarVisible = true;
+
                 var result = await _apiHelper.Authenticate(UserName, Password);
+
+                IsProgressBarVisible = false;
 
                 //Capture more information about the user
                 await _apiHelper.GetLoggedInUserInfo(result.Access_Token);

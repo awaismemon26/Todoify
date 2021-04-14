@@ -13,6 +13,9 @@ using TodoifyDataManager.Library.Models;
 
 namespace TodoifyDataManager.Library.DataAccess
 {
+    /// <summary>
+    /// This class gets the information of User
+    /// </summary>
     public class UserData
     {
         public List<UserModel> GetUserById(string Id)

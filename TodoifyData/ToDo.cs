@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TodoifyData
 {
     /// <summary>
-    /// Basic ToDo Data Model 
+    /// Basic ToDo Data Model imitating database model
     /// </summary>
     public class ToDo
     {

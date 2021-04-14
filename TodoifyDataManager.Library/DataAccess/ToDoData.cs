@@ -13,9 +13,9 @@ using TodoifyDataManager.Library.Models;
 namespace TodoifyDataManager.Library.DataAccess
 {
     /// <summary>
-    /// Data Access Class which basically gets the data from TodoifyData Library, in the future if we need to add the database we could use this library to define models and use Dapper library to simplify our process getting from SQL database.
-    /// Currently for this scenario, I am getting data from TodifyData Library, mapping the ToDo model with our ToDoModel defined in this ToDoifyDataManager Library. This will give our Manager Library Model leverage to choose which items to get from Data Model 
-    /// 
+    /// Data Access Class which basically gets the data from TodoifyData. 
+    /// Currently for this scenario, I am getting data from TodifyData, mapping the ToDo model with our ToDoModel defined in this ToDoifyDataManager.     
+    /// This will give our Manager Library Models leverage to choose which items to get from Data Model.  
     /// </summary>
     public class ToDoData
     {
