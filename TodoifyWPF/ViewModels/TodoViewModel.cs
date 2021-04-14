@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 using TodoifyUI.Library.Api;
@@ -26,7 +27,7 @@ namespace TodoifyWPF.ViewModels
         }
 
 
-        private BindingList<TodoModel> _notCompletedTodo;
+        private BindingList<TodoModel> _notCompletedTodo = new BindingList<TodoModel>();
         public BindingList<TodoModel> NotCompletedTodo
         {
             get { return _notCompletedTodo; }
@@ -37,7 +38,7 @@ namespace TodoifyWPF.ViewModels
             }
         }
 
-        private BindingList<TodoModel> _completedTodo;
+        private BindingList<TodoModel> _completedTodo = new BindingList<TodoModel>();
         public BindingList<TodoModel> CompletedTodo
         {
             get { return _completedTodo; }
@@ -97,6 +98,13 @@ namespace TodoifyWPF.ViewModels
         {
             List<TodoModel> list = await _todoEndpoint.GetAllAsync();
             Todos = new BindingList<TodoModel>(list);
+
+        }
+        public async Task LoadNotCompletedTodo()
+        {
+            await LoadTodo();
+            var notCompletedTodoList = Todos.Where(x => x.CompletionStatus == false).ToList();
+            NotCompletedTodo = new BindingList<TodoModel>(notCompletedTodoList);
         }
 
         public bool CanRemoveTask
@@ -144,9 +152,21 @@ namespace TodoifyWPF.ViewModels
             }
         }
 
+
         public void CompleteTask()
         {
+            TodoModel completeModel = new TodoModel();
+            completeModel.CreationDate = SelectedTodo.CreationDate;
+            completeModel.DueDate = SelectedTodo.DueDate;
+            completeModel.TaskName = SelectedTodo.TaskName;
+            completeModel.ID = SelectedTodo.ID;
+            completeModel.CompletionStatus = true;
 
+            Todos.Remove(Todos.Where(x => x.ID == SelectedTodo.ID).FirstOrDefault());
+
+            Todos.Add(completeModel);
+
+            // Update model completion status in database asynchronously
         }
 
         public void AddTask()
@@ -162,14 +182,14 @@ namespace TodoifyWPF.ViewModels
             };
             Todos.Add(todo);
             
-            // Add Todo into database async
+            // Add Todo into database asynchronously
         }
 
         public void RemoveTask()
         {
-            // Put the completion status to false and update in the database
-
             Todos.Remove(SelectedTodo);
+            
+            // Put the visible status to false and update/delete from the database
         }
 
 
