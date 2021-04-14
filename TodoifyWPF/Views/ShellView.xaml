@@ -5,17 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TodoifyWPF.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="600" Width="1200">
+        Title="Todoify" Height="600" Width="1000">
     <DockPanel>
-        <Menu DockPanel.Dock="Top" FontSize="13">
-            <MenuItem Header="_File">
-                <MenuItem x:Name="Close" Header="_Close"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="_Account">
-                <MenuItem x:Name="LoginScreen" Header="_Login"></MenuItem>
-
-            </MenuItem>
-        </Menu>
         <Grid>
             <ContentControl x:Name="ActiveItem" Margin="5"></ContentControl>
         </Grid>

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 using TodoifyUI.Library.Api;
 using TodoifyUI.Library.Models;
@@ -34,13 +35,24 @@ namespace TodoifyWPF
         //where does container know what to connect to what
         protected override void Configure()
         {
-            _container.Instance(_container);
+            _container.Instance(_container)
+                .PerRequest<ITodoEndpoint, TodoEndpoint>();
+
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<IAPIHelper, APIHelper>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>();
 
+            MessageBinder.SpecialValues.Add("$pressedkey", (context) =>
+            {
+                var keyArgs = context.EventArgs as KeyEventArgs;
+
+                if (keyArgs != null)
+                    return keyArgs.Key;
+
+                return null;
+            });
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

@@ -11,7 +11,7 @@ using TodoifyDataManager.Library.Models;
 namespace TodoifyDataManager.Controllers
 {
     [Authorize]
-    public class ToDoController : ApiController
+    public class TodoController : ApiController
     {
         [HttpGet]
         public List<ToDoModel> GetAll()
