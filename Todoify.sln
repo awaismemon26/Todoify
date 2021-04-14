@@ -18,6 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoifyUI.Library", "Todoif
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoifyWPF", "TodoifyWPF\TodoifyWPF.csproj", "{992C0549-F0BA-404E-9C41-571368680303}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{787E918D-B65A-4508-9295-D6F7614540AC}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Pictures\design.png = ..\..\..\..\Pictures\design.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

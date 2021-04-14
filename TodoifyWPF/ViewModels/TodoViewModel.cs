@@ -155,6 +155,7 @@ namespace TodoifyWPF.ViewModels
 
         public void CompleteTask()
         {
+            // Object DeepCopy
             TodoModel completeModel = new TodoModel();
             completeModel.CreationDate = SelectedTodo.CreationDate;
             completeModel.DueDate = SelectedTodo.DueDate;
