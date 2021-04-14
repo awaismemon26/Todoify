@@ -8,7 +8,11 @@ front end project contains FrontEnd UI library and WPF application itself.
 
 1. Clone the repository 
 2. Open it in Visual Studio
-3. 
+3. 2 Projects with run (Web API and WPF Application)
+4. You can use the following credentials to login 
+	1. username: user@vencortex.io
+	2. password: Pwd123!
+5. If you do not want to use the credentials, then goto https://localhost:PORT/swagge, then click Account and POST /api/Account/Register 
 
 
 ### Design

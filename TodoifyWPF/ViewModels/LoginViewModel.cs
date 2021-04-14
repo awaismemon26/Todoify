@@ -121,6 +121,7 @@ namespace TodoifyWPF.ViewModels
             catch (System.Exception ex)
             {
                 ErrorMessage = ex.Message;
+                IsProgressBarVisible = false;
             }
         }
 
