@@ -112,17 +112,8 @@ namespace TodoifyWPF.ViewModels
             List<TodoModel> list = await _todoEndpoint.GetAllAsync();
             Todos = new BindingList<TodoModel>(list);
 
-            var res = Todos.Where(x => x.CompletionStatus == true).GroupBy(x => x.CreationDate);
-            TodoStatsModel todoStats = new TodoStatsModel();
-            foreach (var key in res)
-            {
-                todoStats.DateTime = key.Key;
-                todoStats.TotalCompleted = key.ToList().Count;
-                
-            }
 
-            TodoStats.Add(todoStats);
-
+            ShowTodoStats(Todos);
         }
         public async Task LoadNotCompletedTodo()
         {
@@ -176,7 +167,22 @@ namespace TodoifyWPF.ViewModels
             }
         }
 
+        public void ShowTodoStats(BindingList<TodoModel> todos)
+        {
+            var res = todos.Where(x => x.CompletionStatus == true).GroupBy(x => x.CreationDate);
+            TodoStatsModel todoStats = new TodoStatsModel();
+            foreach (var key in res)
+            {
+                todoStats.DateTime = key.Key;
+                todoStats.TotalCompleted = key.ToList().Count;
 
+            }
+            if(TodoStats.Where(x => x.DateTime == todoStats.DateTime).Any())
+            {
+                TodoStats.Remove(TodoStats.Where(x => x.DateTime == todoStats.DateTime).FirstOrDefault());
+            }
+            TodoStats.Add(todoStats);
+        }
         public void CompleteTask()
         {
             // Object DeepCopy
@@ -191,7 +197,9 @@ namespace TodoifyWPF.ViewModels
 
             Todos.Add(completeModel);
 
+            ShowTodoStats(Todos);
             // Update model completion status in database asynchronously
+
         }
 
         public void AddTask()

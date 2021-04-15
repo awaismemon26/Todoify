@@ -21,9 +21,9 @@ namespace TodoifyData
             list = new List<ToDo>()
             {
                 new ToDo { ID = 1, TaskName = "Update ToDo List", CreationDate = new DateTime(2021, 03, 15), DueDate = new DateTime(2021, 03, 20), CompletionStatus = false },
-                new ToDo { ID = 2, TaskName = "Plan Birthday!!", CreationDate = new DateTime(2021, 03, 25), DueDate = new DateTime(2021, 03, 27), CompletionStatus = false },
+                new ToDo { ID = 2, TaskName = "Plan Birthday!!", CreationDate = new DateTime(2021, 03, 15), DueDate = new DateTime(2021, 03, 27), CompletionStatus = false },
                 new ToDo { ID = 3, TaskName = "Book Day Tour to Salzburg", CreationDate = new DateTime(2021, 02, 10), DueDate = new DateTime(2021, 02, 12), CompletionStatus = false },
-                new ToDo { ID = 4, TaskName = "Custom PC Build", CreationDate = new DateTime(2021, 01, 05), DueDate = new DateTime(2021, 02, 25), CompletionStatus = false },
+                new ToDo { ID = 4, TaskName = "Custom PC Build", CreationDate = new DateTime(2021, 01, 10), DueDate = new DateTime(2021, 02, 25), CompletionStatus = false },
                 new ToDo { ID = 5, TaskName = "Review code", CreationDate = new DateTime(2021, 01, 10), DueDate = new DateTime(2021, 01, 28), CompletionStatus = false },
                 new ToDo { ID = 6, TaskName = "Finalize Semester courses", CreationDate = new DateTime(2021, 01, 01), DueDate = new DateTime(2021, 04, 10), CompletionStatus = false },
                 new ToDo { ID = 7, TaskName = "Send invoice", CreationDate = new DateTime(2021, 04, 01), DueDate = new DateTime(2021, 04, 03), CompletionStatus = false },
