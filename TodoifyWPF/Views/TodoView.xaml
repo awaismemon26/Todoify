@@ -55,7 +55,7 @@
         <ListBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding TodoStats}" Grid.RowSpan="2" Margin="10" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding TodoStats.TotalCompleted}"></TextBlock>
+                    <TextBlock Text="{Binding DisplayText}"></TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             

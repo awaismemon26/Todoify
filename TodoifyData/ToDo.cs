@@ -29,7 +29,7 @@ namespace TodoifyData
                 new ToDo { ID = 7, TaskName = "Send invoice", CreationDate = new DateTime(2021, 04, 01), DueDate = new DateTime(2021, 04, 03), CompletionStatus = false },
                 new ToDo { ID = 8, TaskName = "Write section on article", CreationDate = new DateTime(2021, 01, 17), DueDate = new DateTime(2021, 01, 30), CompletionStatus = false },
                 new ToDo { ID = 9, TaskName = "Clean harddrives", CreationDate = new DateTime(2021, 04, 03), DueDate = new DateTime(2021, 04, 05), CompletionStatus = true },
-                new ToDo { ID = 10, TaskName = "Learn Distributed Systems", CreationDate = new DateTime(2021, 01, 15), DueDate = new DateTime(2021, 04, 11), CompletionStatus = true },
+                new ToDo { ID = 10, TaskName = "Learn Distributed Systems", CreationDate = new DateTime(2021, 04, 03), DueDate = new DateTime(2021, 04, 11), CompletionStatus = true },
             };
 
             return list;
