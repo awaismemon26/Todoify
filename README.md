@@ -17,6 +17,9 @@ For now, I have only implemented GET feature in API (for all Todo) and in the fu
 
 1. Clone the repository 
 2. Open it in Visual Studio
+3. Select Multi Project Setup (Right click on Solution and select Set Startup Projects)
+![Select MultiProject startup](./Images/multipprojectstartup.png)
+
 3. You can use the following credentials to login to WPF Application which requires login
 	1. username: user@vencortex.io
 	2. password: Pwd123!
