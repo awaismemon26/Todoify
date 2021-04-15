@@ -5,7 +5,7 @@ This simple app is divided into front and backend projects. Backend projects con
 front end project contains FrontEnd UI library and WPF application itself.
 
 ---
-**NOTE**
+***NOTE: ***
 For now, I have only implemented GET feature in API (for all Todo) and in the future we could add PUT, POST, DELETE. I have only updated the models and also mentioned in comments when and where we should add code of PUT, POST, DELETE.
 
 ---

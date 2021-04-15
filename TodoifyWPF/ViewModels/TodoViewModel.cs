@@ -26,7 +26,19 @@ namespace TodoifyWPF.ViewModels
             }
         }
 
-
+        private TodoStatsModel _todoStats = new TodoStatsModel();
+        public TodoStatsModel TodoStats
+        {
+            get
+            {
+                return _todoStats;
+            }
+            set
+            {
+                _todoStats = value;
+                NotifyOfPropertyChange(() => TodoStats);
+            }
+        }
         private BindingList<TodoModel> _notCompletedTodo = new BindingList<TodoModel>();
         public BindingList<TodoModel> NotCompletedTodo
         {
@@ -38,8 +50,9 @@ namespace TodoifyWPF.ViewModels
             }
         }
 
-        private BindingList<TodoModel> _completedTodo = new BindingList<TodoModel>();
-        public BindingList<TodoModel> CompletedTodo
+
+        private int _completedTodo;
+        public int CompletedTodo
         {
             get { return _completedTodo; }
             set
@@ -99,6 +112,8 @@ namespace TodoifyWPF.ViewModels
             List<TodoModel> list = await _todoEndpoint.GetAllAsync();
             Todos = new BindingList<TodoModel>(list);
 
+            var completedlist = Todos.Where(x => x.CompletionStatus == true).ToList().Count;
+            TodoStats.TotalCompleted = completedlist;
         }
         public async Task LoadNotCompletedTodo()
         {
