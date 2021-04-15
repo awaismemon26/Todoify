@@ -4,12 +4,20 @@ This is a simple ToDo application where users have to login and sees the list of
 This simple app is divided into front and backend projects. Backend projects contains the API, ClassLibrary and Data class library itself which is just bunch of classes mimicking a database and we have 
 front end project contains FrontEnd UI library and WPF application itself.
 
+---
+**NOTE**
+For now, I have only implemented GET feature in API (for all Todo) and in the future we could add PUT, POST, DELETE. I have only updated the models and also mentioned in comments when and where we should add code of PUT, POST, DELETE.
+
+---
+
+![Code](./Images/code.png)
+
+
 ## Startup guide
 
 1. Clone the repository 
 2. Open it in Visual Studio
-3. 2 Projects with run (Web API and WPF Application)
-4. You can use the following credentials to login 
+3. You can use the following credentials to login to WPF Application which requires login
 	1. username: user@vencortex.io
 	2. password: Pwd123!
 5. If you do not want or cannot use the credentials, then goto https://localhost:PORT/swagger, then click Account and POST /api/Account/Register 
