@@ -6,7 +6,8 @@ front end project contains FrontEnd UI library and WPF application itself.
 
 ---
 ***NOTE: ***
-For now, I have only implemented GET feature in API (for all Todo) and in the future we could add PUT, POST, DELETE. I have only updated the models and also mentioned in comments when and where we should add code of PUT, POST, DELETE.
+For now, I have only implemented GET feature in API (for all Todo) and in the future we can add PUT, POST, DELETE. I have only updated the models and also mentioned in comments as you can see in the image below 
+when and where we should add the code to update our database accordingly.
 
 ---
 
@@ -23,7 +24,7 @@ For now, I have only implemented GET feature in API (for all Todo) and in the fu
 3. You can use the following credentials to login to WPF Application which requires login
 	1. username: user@vencortex.io
 	2. password: Pwd123!
-5. If you do not want or cannot use the credentials, then goto https://localhost:PORT/swagger, then click Account and POST /api/Account/Register 
+5. If you do not want or cannot use the credentials, then goto https://localhost:44333/swagger, then click Account and POST /api/Account/Register 
 ![Register 01](./Images/register1.png)
 ![Register 02](./Images/register2.png)
 ![Register 03](./Images/register3.png)
