@@ -210,11 +210,11 @@ namespace TodoifyWPF.ViewModels
                 ID = int.Parse(DateTime.Now.ToString("HHmmss")),
                 TaskName = TaskTextBox,
                 DueDate = SelectedDueDate,
-                CreationDate = DateTime.Now,
+                CreationDate = DateTime.Today,
                 CompletionStatus = false
             };
             Todos.Add(todo);
-            
+            ShowTodoStats(Todos);
             // Add Todo into database asynchronously
         }
 
